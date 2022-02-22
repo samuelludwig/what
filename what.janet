@@ -1,10 +1,13 @@
-(def dotfile-loc 
-  (string 
-    (or (os/getenv "XDG_CONFIG_HOME") "/root/.config") 
+(def dotfile-loc
+  (string
+    (or (os/getenv "XDG_CONFIG_HOME") "/home/dot/.config")
     "/what"))
 
+# maybe record hostname?
 # A logfile of unix timestamps and messages
 (def whatfile (string dotfile-loc "/whatfile.log"))
+
+(def what-peg '()) #digits followed by '>' followed by the log
 
 (defn- prepend-timestamp [& str] (string (os/time) ">" (string/join str " ") "\n"))
 
